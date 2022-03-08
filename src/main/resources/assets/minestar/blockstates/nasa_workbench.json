@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east,lit=false": {
+      "model": "minestar:block/nasa_workbench",
+      "y": 90
+    },
+    "facing=north,lit=false": {
+      "model": "minestar:block/nasa_workbench"
+    },
+    "facing=south,lit=false": {
+      "model": "minestar:block/nasa_workbench",
+      "y": 180
+    },
+    "facing=west,lit=false": {
+      "model": "minestar:block/nasa_workbench",
+      "y": 270
+    }
+  }
+}
