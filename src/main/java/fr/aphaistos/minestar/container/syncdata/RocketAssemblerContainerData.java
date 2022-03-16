@@ -1,12 +1,12 @@
 package fr.aphaistos.minestar.container.syncdata;
 
-import fr.aphaistos.minestar.blocks.entity.NasaWorkbenchBlockEntity;
+import fr.aphaistos.minestar.blocks.entity.RocketAssemblerBlockEntity;
 import net.minecraft.world.inventory.SimpleContainerData;
 
-public class NasaWorkbenchContainerData extends SimpleContainerData {
-	private final NasaWorkbenchBlockEntity blockEntity;
+public class RocketAssemblerContainerData extends SimpleContainerData {
+	private final RocketAssemblerBlockEntity blockEntity;
 	
-	public NasaWorkbenchContainerData(NasaWorkbenchBlockEntity blockEntity, int amount) {
+	public RocketAssemblerContainerData(RocketAssemblerBlockEntity blockEntity, int amount) {
 		super(amount);
 		this.blockEntity = blockEntity;
 	}

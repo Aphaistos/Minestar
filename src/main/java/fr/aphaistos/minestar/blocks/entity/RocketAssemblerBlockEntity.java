@@ -14,7 +14,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
 
-public class NasaWorkbenchBlockEntity extends InventoryBlockEntity implements BlockEntityTicker<NasaWorkbenchBlockEntity> {
+public class RocketAssemblerBlockEntity extends InventoryBlockEntity implements BlockEntityTicker<RocketAssemblerBlockEntity> {
 	public static final Component TITLE = new TranslatableComponent(
 	        "container." + MinestarMod.MODID + ".nasa_workbench");
 	protected static final int INVENTORY_SIZE = 14;
@@ -24,8 +24,8 @@ public class NasaWorkbenchBlockEntity extends InventoryBlockEntity implements Bl
     private int progress;
 	private LazyOptional<RFEnergyStorage> energy;
 	
-	public NasaWorkbenchBlockEntity(BlockPos pos, BlockState state) {
-		super(MinestarBlockEntities.NASA_WORKBENCH.get(), pos, state, INVENTORY_SIZE);
+	public RocketAssemblerBlockEntity(BlockPos pos, BlockState state) {
+		super(MinestarBlockEntities.ROCKET_ASSEMBLER.get(), pos, state, INVENTORY_SIZE);
 		this.energyStorage = createEnergyStorage();
 		this.energy = LazyOptional.of(() -> this.energyStorage);
 	}
@@ -62,20 +62,23 @@ public class NasaWorkbenchBlockEntity extends InventoryBlockEntity implements Bl
 	
 	@Override
 	public void tick() {
-		if(this.getEnergy() >= 1) {
-			if(this.progress >= 100) {
-				setProgress(0);
-			} else {			
-				this.progress++;
-			}
-//			System.out.println(getEnergy() + "/" + this.energyStorage.getMaxEnergyStored());
-		}
+//		if(this.getEnergy() >= 1) {
+//			if(this.progress >= 10) {
+//				if(getEnergy() >= 25) {
+//					this.energyStorage.setEnergy(this.energyStorage.getEnergyStored() - 25);
+//					setProgress(0);
+//				}
+//			} else {	
+//				this.progress++;
+//			}
+////			System.out.println(getEnergy() + "/" + this.energyStorage.getMaxEnergyStored());
+//		}
 		
 		super.tick();
 	}
 	
 	@Override
-	public void tick(Level level, BlockPos pos, BlockState state, NasaWorkbenchBlockEntity blockEntity) {
+	public void tick(Level level, BlockPos pos, BlockState state, RocketAssemblerBlockEntity blockEntity) {
 		blockEntity.tick();
 	}
 	

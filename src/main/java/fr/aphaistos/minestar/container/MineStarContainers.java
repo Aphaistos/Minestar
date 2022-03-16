@@ -11,7 +11,7 @@ public class MineStarContainers {
 	
 	public static final DeferredRegister<MenuType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, MinestarMod.MODID);
 	
-	public static final RegistryObject<MenuType<NasaWorkbenchContainer>> NASA_WORKBENCH = CONTAINERS.register("nasa_workbench", 
-			()-> new MenuType<>(NasaWorkbenchContainer::new));
+	public static final RegistryObject<MenuType<RocketAssemblerContainer>> ROCKET_ASSEMBLER = CONTAINERS.register("rocket_assembler", 
+			()-> new MenuType<>(RocketAssemblerContainer::new));
 	
 }

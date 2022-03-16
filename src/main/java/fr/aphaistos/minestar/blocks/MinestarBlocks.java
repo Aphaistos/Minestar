@@ -15,8 +15,8 @@ public class MinestarBlocks {
 	
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MinestarMod.MODID);
 	
-	public static final RegistryObject<Block> NASA_WORKBENCH = BLOCKS.register("nasa_workbench",
-			() -> new NasaWorkbenchBlock(BlockBehaviour.Properties.of(Material.STONE, DyeColor.BLACK).requiresCorrectToolForDrops().noOcclusion().strength(1.8F)));
+	public static final RegistryObject<Block> ROCKET_ASSEMBLER = BLOCKS.register("rocket_assembler",
+			() -> new RocketAssemblerBlock(BlockBehaviour.Properties.of(Material.STONE, DyeColor.BLACK).requiresCorrectToolForDrops().noOcclusion().strength(1.8F)));
     public static final RegistryObject<EnergyGeneratorBlock> ENERGY_GENERATOR = BLOCKS.register("energy_generator",
             () -> new EnergyGeneratorBlock(BlockBehaviour.Properties.copy(Blocks.STONE)));
 }

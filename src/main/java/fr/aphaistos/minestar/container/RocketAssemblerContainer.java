@@ -1,8 +1,8 @@
 package fr.aphaistos.minestar.container;
 
 import fr.aphaistos.minestar.blocks.MinestarBlocks;
-import fr.aphaistos.minestar.blocks.entity.NasaWorkbenchBlockEntity;
-import fr.aphaistos.minestar.container.syncdata.NasaWorkbenchContainerData;
+import fr.aphaistos.minestar.blocks.entity.RocketAssemblerBlockEntity;
+import fr.aphaistos.minestar.container.syncdata.RocketAssemblerContainerData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -17,20 +17,20 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class NasaWorkbenchContainer extends AbstractContainerMenu {
+public class RocketAssemblerContainer extends AbstractContainerMenu {
 
-	private static NasaWorkbenchBlockEntity blockEntity;
+	private static RocketAssemblerBlockEntity blockEntity;
 	private final ContainerLevelAccess containerAccess;
 	public final ContainerData data;
 
 	// Client Constructor
-	public NasaWorkbenchContainer(int id, Inventory playerInventory) {
+	public RocketAssemblerContainer(int id, Inventory playerInventory) {
 		this(id, playerInventory, new ItemStackHandler(14), BlockPos.ZERO, new SimpleContainerData(3));
 	}
 
 	// Server Constructor
-	public NasaWorkbenchContainer(int id, Inventory playerInventory, IItemHandler slots, BlockPos pos, ContainerData data) {
-		super(MineStarContainers.NASA_WORKBENCH.get(), id);
+	public RocketAssemblerContainer(int id, Inventory playerInventory, IItemHandler slots, BlockPos pos, ContainerData data) {
+		super(MineStarContainers.ROCKET_ASSEMBLER.get(), id);
 		this.containerAccess = ContainerLevelAccess.create(playerInventory.player.level, pos);
 		this.data = data;
 		final int slotSize = 18, startX = 8, startY = 142, hotbarY = 200;
@@ -67,11 +67,11 @@ public class NasaWorkbenchContainer extends AbstractContainerMenu {
 
 	@Override
 	public boolean stillValid(Player player) {
-		return stillValid(containerAccess, player, MinestarBlocks.NASA_WORKBENCH.get());
+		return stillValid(containerAccess, player, MinestarBlocks.ROCKET_ASSEMBLER.get());
 	}
 
-	public static MenuConstructor getServerContainer(NasaWorkbenchBlockEntity nasaWorkbench, BlockPos pos) {
-		return (id, playerInv, player) -> new NasaWorkbenchContainer(id, playerInv, nasaWorkbench.inventory, pos, new NasaWorkbenchContainerData(nasaWorkbench, 3));
+	public static MenuConstructor getServerContainer(RocketAssemblerBlockEntity nasaWorkbench, BlockPos pos) {
+		return (id, playerInv, player) -> new RocketAssemblerContainer(id, playerInv, nasaWorkbench.inventory, pos, new RocketAssemblerContainerData(nasaWorkbench, 3));
 	}
 
 	@Override
@@ -90,14 +90,13 @@ public class NasaWorkbenchContainer extends AbstractContainerMenu {
 
 			if (stack.isEmpty()) slot.set(ItemStack.EMPTY);
 			else slot.setChanged();
-
-			/*if (stack.getCount() == retStack.getCount())
-				return ItemStack.EMPTY;
-
-			slot.onTake(player, stack);*/
 		}
 
 		return retStack;
+	}
+	
+	public int getProgess() {
+		return this.data.get(0);
 	}
 	
 	public int getEnergy() {

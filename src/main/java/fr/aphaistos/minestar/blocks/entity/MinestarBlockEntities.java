@@ -12,8 +12,8 @@ public class MinestarBlockEntities {
 	
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, MinestarMod.MODID);
 	
-	public static final RegistryObject<BlockEntityType<NasaWorkbenchBlockEntity>> NASA_WORKBENCH = BLOCK_ENTITIES.register("nasa_workbench", 
-			() -> BlockEntityType.Builder.of(NasaWorkbenchBlockEntity::new, MinestarBlocks.NASA_WORKBENCH.get()).build(null));
+	public static final RegistryObject<BlockEntityType<RocketAssemblerBlockEntity>> ROCKET_ASSEMBLER = BLOCK_ENTITIES.register("rocket_assembler", 
+			() -> BlockEntityType.Builder.of(RocketAssemblerBlockEntity::new, MinestarBlocks.ROCKET_ASSEMBLER.get()).build(null));
     public static final RegistryObject<BlockEntityType<EnergyGeneratorBlockEntity>> ENERGY_GENERATOR = BLOCK_ENTITIES.register("energy_generator", 
     		() -> BlockEntityType.Builder.of(EnergyGeneratorBlockEntity::new, MinestarBlocks.ENERGY_GENERATOR.get()).build(null));
 }

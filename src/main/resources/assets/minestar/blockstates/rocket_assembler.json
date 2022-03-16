@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "minestar:block/rocket_assembler",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "minestar:block/rocket_assembler"
+    },
+    "facing=south": {
+      "model": "minestar:block/rocket_assembler",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "minestar:block/rocket_assembler",
+      "y": 270
+    }
+  }
+}

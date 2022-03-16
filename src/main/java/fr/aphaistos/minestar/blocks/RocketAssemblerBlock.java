@@ -1,8 +1,8 @@
 package fr.aphaistos.minestar.blocks;
 
 import fr.aphaistos.minestar.blocks.entity.MinestarBlockEntities;
-import fr.aphaistos.minestar.blocks.entity.NasaWorkbenchBlockEntity;
-import fr.aphaistos.minestar.container.NasaWorkbenchContainer;
+import fr.aphaistos.minestar.blocks.entity.RocketAssemblerBlockEntity;
+import fr.aphaistos.minestar.container.RocketAssemblerContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -28,10 +28,11 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 
-public class NasaWorkbenchBlock extends BaseEntityBlock {
+@SuppressWarnings("deprecation")
+public class RocketAssemblerBlock extends BaseEntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
-	public NasaWorkbenchBlock(Properties props) {
+	public RocketAssemblerBlock(Properties props) {
 		super(props);
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
@@ -58,15 +59,15 @@ public class NasaWorkbenchBlock extends BaseEntityBlock {
 
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return MinestarBlockEntities.NASA_WORKBENCH.get().create(pos, state);
+		return MinestarBlockEntities.ROCKET_ASSEMBLER.get().create(pos, state);
 	}
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand,
 			BlockHitResult result) {
-		if (!level.isClientSide && level.getBlockEntity(pos) instanceof final NasaWorkbenchBlockEntity blockEntity) {
-			MenuProvider container = new SimpleMenuProvider(NasaWorkbenchContainer.getServerContainer(blockEntity, pos),
-					NasaWorkbenchBlockEntity.TITLE);
+		if (!level.isClientSide && level.getBlockEntity(pos) instanceof final RocketAssemblerBlockEntity blockEntity) {
+			MenuProvider container = new SimpleMenuProvider(RocketAssemblerContainer.getServerContainer(blockEntity, pos),
+					RocketAssemblerBlockEntity.TITLE);
 			NetworkHooks.openGui((ServerPlayer) player, container, pos);
 		}
 		return InteractionResult.SUCCESS;
@@ -76,7 +77,7 @@ public class NasaWorkbenchBlock extends BaseEntityBlock {
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state,
 			BlockEntityType<T> type) {
 		return level.isClientSide() ? null
-				: ($0, $1, $2, blockEntity) -> ((NasaWorkbenchBlockEntity) blockEntity).tick();
+				: ($0, $1, $2, blockEntity) -> ((RocketAssemblerBlockEntity) blockEntity).tick();
 	}
 
 }

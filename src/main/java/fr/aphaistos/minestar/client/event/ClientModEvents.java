@@ -1,7 +1,7 @@
 package fr.aphaistos.minestar.client.event;
 
 import fr.aphaistos.minestar.MinestarMod;
-import fr.aphaistos.minestar.client.screen.NasaWorkbenchScreen;
+import fr.aphaistos.minestar.client.screen.RocketAssemblerScreen;
 import fr.aphaistos.minestar.container.MineStarContainers;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
@@ -16,6 +16,6 @@ public class ClientModEvents {
 	
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event) {
-		MenuScreens.register(MineStarContainers.NASA_WORKBENCH.get(), NasaWorkbenchScreen::new);
+		MenuScreens.register(MineStarContainers.ROCKET_ASSEMBLER.get(), RocketAssemblerScreen::new);
 	}	
 }

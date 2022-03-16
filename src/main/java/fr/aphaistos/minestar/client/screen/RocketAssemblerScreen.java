@@ -4,20 +4,24 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import fr.aphaistos.minestar.MinestarMod;
-import fr.aphaistos.minestar.blocks.entity.NasaWorkbenchBlockEntity;
-import fr.aphaistos.minestar.container.NasaWorkbenchContainer;
+import fr.aphaistos.minestar.blocks.entity.RocketAssemblerBlockEntity;
+import fr.aphaistos.minestar.container.RocketAssemblerContainer;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraftforge.client.gui.widget.ExtendedButton;
 
-public class NasaWorkbenchScreen extends AbstractContainerScreen<NasaWorkbenchContainer> {
+public class RocketAssemblerScreen extends AbstractContainerScreen<RocketAssemblerContainer> {
 	public static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(MinestarMod.MODID, "textures/gui/nasa_workbench.png");
 	
-	public NasaWorkbenchScreen(NasaWorkbenchContainer container, Inventory playerInventory, Component title) {
-		super(container, playerInventory, NasaWorkbenchBlockEntity.TITLE);
+	private ExtendedButton launchButton;
+	
+	public RocketAssemblerScreen(RocketAssemblerContainer container, Inventory playerInventory, Component title) {
+		super(container, playerInventory, RocketAssemblerBlockEntity.TITLE);
 		this.leftPos = 0;
 		this.topPos = 0;
 		this.imageWidth = 176;
@@ -32,8 +36,12 @@ public class NasaWorkbenchScreen extends AbstractContainerScreen<NasaWorkbenchCo
 		RenderSystem.setShaderTexture(0, TEXTURE_LOCATION);
 		blit(stack, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
 		int energy = this.menu.getEnergy();
-		int height = energy * 50 / this.menu.getMaxEnergy();
-		blit(stack, this.leftPos + 155, this.topPos + 7, 176, 0, 14, height);
+		int energyHeight = energy * 50 / this.menu.getMaxEnergy();
+		blit(stack, this.leftPos + 155, this.topPos + (56 - energyHeight), 176, (49 - energyHeight), 14, energyHeight);
+		
+		int progress = this.menu.getProgess();
+		int progressWidth = progress * 24 / 10;
+		blit(stack, this.leftPos + 89, this.topPos + 53, 190, 0, progressWidth, 17);
 		
 		if(mouseX >= (this.leftPos + 155) && mouseX <= (this.leftPos + 168) &&
 				mouseY >= (this.topPos + 7) && mouseY <= (this.topPos + 56)) {
@@ -57,7 +65,9 @@ public class NasaWorkbenchScreen extends AbstractContainerScreen<NasaWorkbenchCo
 	@Override
 	protected void init() {
 		super.init();
-		
+		this.launchButton = new ExtendedButton(leftPos + 95, topPos + 106, 75, 18, new TranslatableComponent("button." + MinestarMod.MODID + ".launch_craft"), (b) -> {
+		});
+		addRenderableWidget(this.launchButton);
 	}
 
 }

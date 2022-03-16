@@ -26,7 +26,7 @@ public class MinestarMod {
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {
-		ItemBlockRenderTypes.setRenderLayer(MinestarBlocks.NASA_WORKBENCH.get(), RenderType.cutoutMipped());
+		ItemBlockRenderTypes.setRenderLayer(MinestarBlocks.ROCKET_ASSEMBLER.get(), RenderType.cutoutMipped());
 	}
 
 }

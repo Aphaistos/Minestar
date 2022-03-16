@@ -1,4 +1,5 @@
 {
-	"block.minestar.nasa_workbench": "NASA Workbench",
-	"container.minestar.nasa_workbench": "NASA Workbench"
+	"block.minestar.rocket_assembler": "Rocket Assembler",
+	"container.minestar.rocket_assembler": "Rocket Assembler",
+	"button.minestar.launch_craft": "Launch"
 }
